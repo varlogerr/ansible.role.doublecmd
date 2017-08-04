@@ -1,4 +1,4 @@
 ---
 os_distro: "{{ ansible_distribution }}"
-os_codename: "{{ ansible_distribution_release }}"
+doublecmd_os_codename: "{{ ansible_distribution_release }}"
 current_distro: "{{ ansible_distribution }}{{ ansible_distribution_major_version }}"
