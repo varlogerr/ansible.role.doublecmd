@@ -14,7 +14,8 @@
   set_fact: os_codename=xenial
   when:
   - current_distro in [
-      "Linuxmint18"
+      "Linuxmint18",
+      "Debian9"
     ]
 
 
