@@ -1,0 +1,32 @@
+---
+- name: set OS facts for Ubuntu Trusty derivatives
+  set_fact: os_codename=trusty
+  when:
+  - os_codename in [
+      "rosa",
+      "rebecca",
+      "rafaela",
+      "stretch",
+      "jessie"
+    ]
+
+- name: set OS facts for Ubuntu Xenial derivatives
+  set_fact: os_codename=xenial
+  when:
+  - current_distro in [
+      "Linuxmint18"
+    ]
+
+
+- name: add double commander ppa
+  apt_repository:
+    repo: 'ppa:alexx2000/doublecmd'
+    codename: "{{ os_codename }}"
+    filename: doublecmd
+    state: present
+
+- name: update cache
+  shell: apt-get update
+
+- name: install double commander
+  apt: name=doublecmd-qt state=latest
